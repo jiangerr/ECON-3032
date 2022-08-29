@@ -48,9 +48,7 @@
   - $F$-statistic
     $$F=\frac{s_1^2}{s_2^2}$$
   - confidence interval
-    $$\frac{F}{F_{\alpha/2, k_1, k_2}} <
-    \frac{\sigma_1^2}{\sigma_2^2} < 
-    \frac{F}{F_{1-(\alpha/2), k_1, k_2}}$$
+    $$\frac{F}{F_{\alpha/2, k_1, k_2}} < \frac{\sigma_1^2}{\sigma_2^2} < \frac{F}{F_{1-(\alpha/2), k_1, k_2}}$$
     - $k_i=n_i-1$ (degrees of freedom)
       - pay attention to which $k$ is which
       - $k_1$ corresponds to d.o.f. of the *numerator* of the $F$-statistic (i.e. $s_1$), $k_2$ to the *denominator*
