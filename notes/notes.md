@@ -21,6 +21,7 @@
     - Final - **35%**
     - Homework - **20%**
         - 10-12 total problem sets, lowest two dropped
+        - name homework files as "hwX_FirstLast.pdf"
 ---
 ### Chapter 1
 
@@ -60,10 +61,24 @@
             alpha = .05
             df1 = ...
             df2 = ...
+            s1 = ...
+            s2 = ...
+            testStat = (s1/s2)^2
             # denominator values for CI bounds
+            # if testStat exceeds lower or upper bound (see notes), reject
+            # isf: "inverse survival function"
             lowerCV = f.isf(alpha/2, df1, df2)
             upperCV = f.isf(1-alpha/2, df1, df2)
-            # p-values
-            p = f.sf(alpha/2, df1, df2)
+
+            # p-value: gives us smallest alpha at which we can reject
+            # multiply by 2 for two-tailed test
+            p = 2*f.sf(testStat, df1, df2)
         ```
     - 
+
+$$
+   \begin{align*} 
+   test &= test \\
+   &= test
+   \end{align*}
+   $$
