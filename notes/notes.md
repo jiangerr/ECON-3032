@@ -1,3 +1,16 @@
+---
+author: Ethan Jiang
+date: August 25th, 2022
+title: ECON 3032 Notes
+header-includes:
+  - \usepackage{amsmath}
+  - \usepackage{amsthm}
+  - \usepackage{mathtools}
+output:
+  pdf_document:
+    keep_tex: true
+---
+
 <!-- omit in toc -->
 # *ECON 3032-01: Applied Econometrics* 
 <!-- omit in toc -->
@@ -8,6 +21,7 @@
     - [Basic Information](#basic-information)
     - [Chapter 1](#chapter-1)
       - [Review: F-distributions](#review-f-distributions)
+      - [Simple Regression](#simple-regression)
 ---
 ### Basic Information
 
@@ -63,7 +77,7 @@
             df2 = ...
             s1 = ...
             s2 = ...
-            testStat = (s1/s2)^2
+            testStat = pow(s1/s2, 2)
             # denominator values for CI bounds
             # if testStat exceeds lower or upper bound (see notes), reject
             # isf: "inverse survival function"
@@ -74,11 +88,38 @@
             # multiply by 2 for two-tailed test
             p = 2*f.sf(testStat, df1, df2)
         ```
-    - 
 
-$$
-   \begin{align*} 
-   test &= test \\
-   &= test
-   \end{align*}
-   $$
+#### Simple Regression
+- definition of **regression model**
+  - simple linear: $y=f(x)$
+  - multiple linear: $y=f(x_1,x_2,...)$
+- issues
+  - need to determine factors affecting dependent var
+  - functional relationship b/w $y$ and $x_i$?
+  - are we capturing a *ceteris paribus* relationship?
+  - what are the consequences of omitting vars from the regression?
+- **simple regression model** (one explanatory variable)
+  $$y=\beta_0+\beta_1 x+u$$
+  - $u \in \R$ is the error term
+    - describes "intrinsic randomness" of human behavior not predictable by independent var(s)
+  - $y$ is the dependent variable (dependent on the independent variable $x$)
+  - $\beta_0, \beta_1$ are population constant & slope, respectively
+  - interpreting $\beta_1$
+    - it should be obvious that $\frac{\delta y}{\delta x}=\beta_1$ when $\Delta u = 0$, i.e. $u \in \R$
+- **assumptions**
+  1. $E(u) = 0$
+     - assumed WLOG
+     - presence of $\beta_0$ allows this, since we can always adjust it s.t. this assumption is held)
+  2. $E(u|x) = E(u) = 0 \; \forall x$
+     - "$u$ is *mean independent* of $x$"
+     - i.e. assumption 1 holds at each value of $x$
+     - important for lurking vars, which may seem to demonstrate a false relationship between $x$ and $y$ (whereas some var $z$ actually affects $x$ and $y$ but is only accounted for in $u$)
+- **population regression function**
+  $$
+  \begin{align*}
+  E(y|x) &= E[(\beta_0+\beta_1 x+u)|x] \\
+  &= E(\beta_0|x) + E(\beta_1 x | x) + E(u|x) \\
+  &= \beta_0+\beta_1 x
+  \end{align*}
+  $$
+  - implies the population regression function is a *linear function of $x$*
