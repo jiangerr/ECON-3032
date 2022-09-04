@@ -102,11 +102,5 @@
      - i.e. assumption 1 holds at each value of $x$
      - important for lurking vars, which may seem to demonstrate a false relationship between $x$ and $y$ (whereas some var $z$ actually affects $x$ and $y$ but is only accounted for in $u$)
 - **population regression function**
-  $$
-  \begin{align*}
-  E(y|x) &= E[(\beta_0+\beta_1 x+u)|x] \\
-  &= E(\beta_0|x) + E(\beta_1 x | x) + E(u|x) \\
-  &= \beta_0+\beta_1 x
-  \end{align*}
-  $$
+  $$\begin{align*} E(y|x) &= E[(\beta_0+\beta_1 x+u)|x] \\\\ &= E(\beta_0|x) + E(\beta_1 x | x) + E(u|x) \\\\ &= \beta_0+\beta_1 x \end{align*}$$
   - implies the population regression function is a linear function of $x$
