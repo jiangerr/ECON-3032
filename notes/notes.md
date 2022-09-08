@@ -101,6 +101,56 @@
      - " $u$ is *mean independent* of $x$ "
      - i.e. assumption 1 holds at each value of $x$
      - important for lurking vars, which may seem to demonstrate a false relationship between $x$ and $y$ (whereas some var $z$ actually affects $x$ and $y$ but is only accounted for in $u$)
+     - note that this assumption implies Assumption 1 and $Cov(x,u)=0$
 - **population regression function**
   $$\begin{align*} E(y|x) &= E[(\beta_0+\beta_1 x+u)|x] \\\\ &= E(\beta_0|x) + E(\beta_1 x | x) + E(u|x) \\\\ &= \beta_0+\beta_1 x \end{align*}$$
   - implies the population regression function is a linear function of $x$
+- estimating $\beta_0$ & $\beta_1$ (**ordinary least squares (OLS) method**)
+  - recall: we call these estimates $\hat\beta_0$, $\hat\beta_1$
+  - let us have a random sample $(x_i, y_i) \; | \; i=1,2,\dots,n$
+  - our previous assumptions apply: $E(u)=0$, $Cov(x,u)=0$
+    - $Cov(x,u)=E(xu)-E(x)E(u)$, so $E(xu)=0$
+  - deriving conditions
+  $$ \begin{align*} E(u) &= E(y - \beta_0 - \beta_1 x) = 0 \\\\ 0 &= \frac{\sum_{i=1}^n (y_i - \hat\beta_0 \hat\beta_1 x_i)}{n} \tag{1} \end{align*} $$
+  $$ \begin{align*} E(xu) &= E(x(y - \beta_0 - \beta_1 x)) = 0 \\\\ 0 &= \frac{\sum_{i=1}^n [x_i(y_i - \hat\beta_0 - \hat\beta_1 x_i)]}{n} \tag{2} \end{align*} $$
+    - derivation continues (see *Chapter 2* slides on Brightspace)
+  - **resulting equations**
+  $$ \hat\beta_0 = \hat y - \hat\beta_1\bar x $$
+  $$ \hat\beta_1 = \frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{\sum_{i=1}^n {(x_i-\bar x)}^2} = \frac{\text{Sample Cov}(x_i, y_i)}{\text{Sample Var}(x_i)} $$
+- fitted/predicted values for $y_i$
+  - defined by
+  $$\hat y_i = \hat\beta_0 + \hat\beta_1 x_i$$
+- residual of $y_i$
+  - defined by
+  $$\hat u_i = y_i - \hat y_i = y_i - \hat \beta_0 - \hat\beta_1 x_i$$
+  - we are minimizing the sum of residual squares, i.e.
+  $$\sum_{i=1}^n \hat u_i^2$$
+- algebraic properties of OLS
+  - sample average is same as fitted average
+  $$\begin{align*} \sum_{i=1}^n \hat u_i &= 0 \\\\ y_i &= \hat y_i + \hat u_i \\\\ \implies n^{-1} \sum_{i=1}^n y_i &= n^{-1} \sum_{i=1}^n \hat y_i + 0 \\\\ \implies \bar y &= \hat y \end{align*}$$
+  - sample covariance (and thus correlation) b/w any $x_i$ and $\hat u_i$ is 0
+  $$\sum_{i=1}^n x_i\hat u_i = 0$$
+  - $\hat y_i$ is a linear function of $x_i$ so the above sum is also true for $\hat y_i$ and $\hat u_i$
+  - $(\bar x, \bar y)$ is always on the regression line
+- **assumptions of OLS method**
+  1. population model is linear in parameters
+  2. given a random sample $(x_i, y_i) \; | \; i \in \{1, \dots, n\}$ that follows population model $y = \beta_0 + \beta_1 x + u$
+  3. $x_i$ differs in at least one value
+  4. $E(u|x)=0$
+  5. $Var(u|x)=\sigma^2$, i.e. error has same variance for any given value of $x$ (*homoskedasticity*)
+  - bias of estimators dependent on assumptions 1-4, assumption 5 needed for $Var(\hat\beta_1)$
+- recall: estimator bias
+  - $\hat \theta$ is an unbiased estimator of $\theta$ if
+  $$E(\hat\theta) = \theta$$
+  - if $\hat \theta$ biased, then
+  $$Bias(\hat \theta) \coloneqq E(\hat \theta) - \theta$$
+- variance of $\hat \beta_1$
+  - recall that we define the total sum of squares (SST) by
+  $$SST_x \coloneqq \sum_{i=1}^n {(x_i - \bar x)^2}$$
+  - thus $Var(\hat \beta_1)$ is
+  $$Var(\hat \beta_1) = \frac{\sigma^2}{SST_x}$$
+  ($\sigma^2 = Var(u)$, i.e. *error variance*)
+  - implications
+    - $Var(\hat \beta_1)$ increases if $\sigma^2$ increases (residuals tend to deviate more) or $SST_x$ decreases (less variation between $x_i$, which makes it harder to predict slope)
+- variance of $\hat \beta_0$
+  - 
