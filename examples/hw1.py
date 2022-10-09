@@ -33,3 +33,8 @@ lowerCV = F/f.isf(alpha/2, df1, df2)
 upperCV = F/f.isf(1-alpha/2, df1, df2)
 print('CI: [{}, {}]'.format(lowerCV, upperCV))
 # %%
+a = 19
+b = 21
+
+print('RESULT: {}'.format((a*b)/(pow(a,2)-pow(b,2))))
+# %%
