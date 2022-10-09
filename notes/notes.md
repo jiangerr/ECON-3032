@@ -131,7 +131,7 @@
      - important for lurking vars, which may seem to demonstrate a false relationship between $x$ and $y$ (whereas some var $z$ actually affects $x$ and $y$ but is only accounted for in $u$)
      - note that this assumption implies Assumption 1 and $Cov(x,u)=0$
 - **population regression function**
-  $$\begin{align*} E(y|x) &= E[(\beta_0+\beta_1 x+u)|x] \\\\ &= E(\beta_0|x) + E(\beta_1 x | x) + E(u|x) \\\\ &= \beta_0+\beta_1 x \end{align*}$$
+  $$\begin{aligned} E(y|x) &= E[(\beta_0+\beta_1 x+u)|x] \\\\ &= E(\beta_0|x) + E(\beta_1 x | x) + E(u|x) \\\\ &= \beta_0+\beta_1 x \end{aligned}$$
   - implies the population regression function is a linear function of $x$
 - estimating $\beta_0$ & $\beta_1$ (**ordinary least squares (OLS) method**)
   - recall: we call these estimates $\hat\beta_0$, $\hat\beta_1$
@@ -139,12 +139,12 @@
   - our previous assumptions apply: $E(u)=0$, $Cov(x,u)=0$
     - $Cov(x,u)=E(xu)-E(x)E(u)$, so $E(xu)=0$
   - deriving conditions
-  $$ \begin{align*} E(u) &= E(y - \beta_0 - \beta_1 x) = 0 \\\\ 0 &= \frac{\sum_{i=1}^n (y_i - \hat\beta_0 \hat\beta_1 x_i)}{n} \tag{1} \end{align*} $$
-  $$ \begin{align*} E(xu) &= E(x(y - \beta_0 - \beta_1 x)) = 0 \\\\ 0 &= \frac{\sum_{i=1}^n [x_i(y_i - \hat\beta_0 - \hat\beta_1 x_i)]}{n} \tag{2} \end{align*} $$
+  $$ \begin{aligned} E(u) &= E(y - \beta_0 - \beta_1 x) = 0 \\\\ 0 &= \frac{\sum_{i=1}^n (y_i - \hat\beta_0 \hat\beta_1 x_i)}{n} \tag{1} \end{aligned} $$
+  $$ \begin{aligned} E(xu) &= E(x(y - \beta_0 - \beta_1 x)) = 0 \\\\ 0 &= \frac{\sum_{i=1}^n [x_i(y_i - \hat\beta_0 - \hat\beta_1 x_i)]}{n} \tag{2} \end{aligned} $$
     - derivation continues (see *Chapter 2* slides on Brightspace)
   - **resulting equations**
-  $$ \hat\beta_0 = \hat y - \hat\beta_1\bar x $$
-  $$ \hat\beta_1 = \frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{\sum_{i=1}^n {(x_i-\bar x)}^2} = \frac{\text{Sample Cov}(x_i, y_i)}{\text{Sample Var}(x_i)} $$
+  $$\hat\beta_0 = \hat y - \hat\beta_1\bar x$$
+  $$\hat\beta_1 = \frac{\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y)}{\sum_{i=1}^n {(x_i-\bar x)}^2} = \frac{\text{Sample Cov}(x_i, y_i)}{\text{Sample Var}(x_i)}$$
 - fitted/predicted values for $y_i$
   - defined by
   $$\hat y_i = \hat\beta_0 + \hat\beta_1 x_i$$
@@ -155,7 +155,7 @@
   $$\sum_{i=1}^n \hat u_i^2$$
 - algebraic properties of OLS
   - sample average is same as fitted average
-  $$\begin{align*} \sum_{i=1}^n \hat u_i &= 0 \\\\ y_i &= \hat y_i + \hat u_i \\\\ \implies n^{-1} \sum_{i=1}^n y_i &= n^{-1} \sum_{i=1}^n \hat y_i + 0 \\\\ \implies \bar y &= \hat y \end{align*}$$
+  $$\begin{aligned} \sum_{i=1}^n \hat u_i &= 0 \\\\ y_i &= \hat y_i + \hat u_i \\\\ \implies n^{-1} \sum_{i=1}^n y_i &= n^{-1} \sum_{i=1}^n \hat y_i + 0 \\\\ \implies \bar y &= \hat y \end{aligned}$$
   - sample covariance (and thus correlation) b/w any $x_i$ and $\hat u_i$ is 0
   $$\sum_{i=1}^n x_i\hat u_i = 0$$
   - $\hat y_i$ is a linear function of $x_i$ so the above sum is also true for $\hat y_i$ and $\hat u_i$
@@ -182,7 +182,7 @@
     - $Var(\hat \beta_1)$ increases if $\sigma^2$ increases (residuals tend to deviate more) or $SST_x$ decreases (less variation between $x_i$, which makes it harder to predict slope)
     - note that $Var(y|x)=Var(u|x)=\sigma^2$
 - variance of $\hat \beta_0$
-  $$\begin{align*} \hat\beta_0 &= \bar y - \hat\beta_1\bar x \\\\ Var(\hat\beta_0) &= Var(\bar y - \hat\beta_1\bar x) \\\\ Var(\hat\beta_0) &= \frac{\sum_{i=1}^n x_i^2}{n}Var(\hat\beta_1)\end{align*}$$
+  $$\begin{aligned} \hat\beta_0 &= \bar y - \hat\beta_1\bar x \\\\ Var(\hat\beta_0) &= Var(\bar y - \hat\beta_1\bar x) \\\\ Var(\hat\beta_0) &= \frac{\sum_{i=1}^n x_i^2}{n}Var(\hat\beta_1)\end{aligned}$$
 - estimating $\sigma^2$
   - usually is unknown - we find $\hat\sigma^2$ so we can estimate $Var(\beta_0), Var(\beta_1)$
   $$\hat\sigma^2 = \frac{\sum_{i=1}^n \hat u_i^2}{n-k-1} \coloneqq \frac{SSR}{n-k-1}$$
@@ -249,7 +249,7 @@ $$R^2 = \frac{SSE}{SST} = 1 - \frac{SSR}{SST}$$
 - finding precise change in $y$
   - ex. $\log y = \beta_0 + \beta_1 x + u$
   - interpret the change in $y$ ($\frac{y_2-y_1}{y_1}$) when $\Delta x = 1$
-  $$\begin{align*} \log y_2 - \log y_1 &= \beta_1 \\\\ e^{\log \frac{y_2}{y_1}} &= e^{\beta_1}\\\\ \frac{y_2}{y_1} &= e^{\beta_1} \\\\ \implies \frac{y_2-y_1}{y_1} &= e^{\beta_1}-1\end{align*}$$
+  $$\begin{aligned} \log y_2 - \log y_1 &= \beta_1 \\\\ e^{\log \frac{y_2}{y_1}} &= e^{\beta_1}\\\\ \frac{y_2}{y_1} &= e^{\beta_1} \\\\ \implies \frac{y_2-y_1}{y_1} &= e^{\beta_1}-1 \end{aligned}$$
   - proportion of change is thus $e^{\beta_1} - 1$
 
 ### Chapter 3
@@ -283,9 +283,9 @@ $$R^2 = \frac{SSE}{SST} = 1 - \frac{SSR}{SST}$$
     - we call $\hat \beta_2 \tilde \delta_1$ the **omitted variable bias**
     - proof
       - we are given:
-        $$\begin{align*} \text{underspecified: } y &= \tilde \beta_0 + \tilde \beta_1 x_1 + \tilde u \\\\ \text{true: } y &= \hat \beta_0 + \hat \beta_1 x_1 + \hat \beta_2 x_2 + \hat u \\\\ \text{confounder: } x_2 &= \tilde \delta_0 + \tilde \delta_1 x_1 + \tilde \epsilon\end{align*}$$
+        $$\begin{aligned} \text{underspecified: } y &= \tilde \beta_0 + \tilde \beta_1 x_1 + \tilde u \\\\ \text{true: } y &= \hat \beta_0 + \hat \beta_1 x_1 + \hat \beta_2 x_2 + \hat u \\\\ \text{confounder: } x_2 &= \tilde \delta_0 + \tilde \delta_1 x_1 + \tilde \epsilon\end{aligned}$$
       - thus
-        $$\begin{align*} y &= \hat\beta_0 + \hat\beta_1 x_1 + \hat\beta_2 x_2 + \hat u \\\\ &= \hat\beta_0 + \hat\beta_1 x_1 + \hat\beta_2 (\tilde \delta_0 + \tilde \delta_1 x_1 + \tilde \epsilon) + \hat u \\\\ &= \hat\beta_0 + \hat\beta_1 x_1 + \hat\beta_2\tilde \delta_0 + \hat\beta_2\tilde \delta_1 x_1 + \hat\beta_2\tilde \epsilon + \hat u \\\\ &= \hat\beta_0 + \hat\beta_2\tilde \delta_0 + (\hat\beta_1 + \hat\beta_2\tilde \delta_1)x_1 + \hat\beta_2\tilde \epsilon + \hat u \end{align*}$$
+        $$\begin{aligned} y &= \hat\beta_0 + \hat\beta_1 x_1 + \hat\beta_2 x_2 + \hat u \\\\ &= \hat\beta_0 + \hat\beta_1 x_1 + \hat\beta_2 (\tilde \delta_0 + \tilde \delta_1 x_1 + \tilde \epsilon) + \hat u \\\\ &= \hat\beta_0 + \hat\beta_1 x_1 + \hat\beta_2\tilde \delta_0 + \hat\beta_2\tilde \delta_1 x_1 + \hat\beta_2\tilde \epsilon + \hat u \\\\ &= \hat\beta_0 + \hat\beta_2\tilde \delta_0 + (\hat\beta_1 + \hat\beta_2\tilde \delta_1)x_1 + \hat\beta_2\tilde \epsilon + \hat u \end{aligned}$$
       - comparing to the underspecified model,
         $$\tilde\beta_0 = \hat\beta_0 + \hat\beta_2 \tilde\delta_0$$
         $$\tilde\beta_1 = \hat\beta_1 + \hat\beta_2 \tilde\delta_1$$
@@ -396,7 +396,7 @@ $$E(t_{df}) = 0 \; \; (df > 1)$$
 $$Var(t_{df}) = \frac{df}{df-2} \; \; (df > 2)$$
 - we will rarely have small enough $df$ to worry about the latter conditionals
 - $t$ distribution tends to be more spread out than Normal curve
-  - as $df \rightarrow \infin$, $t_{df} \rightarrow N(0,1)$
+  - as $df \rightarrow \infty$, $t_{df} \rightarrow N(0,1)$
 #### Hypothesis testing - value of a single parameter
 - $H_0: \beta_j = k, \; \; k \in \mathbb{R}$
 - $t = \frac{\hat\beta_j - \beta_j}{se(\hat\beta_j)} \sim t_{n-k-1}$
@@ -419,7 +419,7 @@ reg.t.test('x = 0')
 - statistical significance DOES NOT necessarily imply economic significance
 #### Confidence intervals
 - two-sided
-$$\hat\beta_j \plusmn t_{\alpha/2, n-k-1} * se(\hat\beta_j)$$
+$$\hat\beta_j \pm t_{\alpha/2, n-k-1} * se(\hat\beta_j)$$
 - one-sided
 #### Hypothesis testing - linear combination of parameters
 - $H_0$s like $\beta_1 = \beta_2$, i.e. $\beta_1 - \beta_2 = 0$
@@ -432,7 +432,7 @@ $$H_0: \theta_1 = 0$$
 $$H_2: \theta_1 < 0$$
   - $\theta_1 = \beta_1 - \beta_2 \implies \beta_1 = \theta_1 + \beta_2$
   - substitute this for $\beta_1$ in the linear model
-$$\begin{align*} y &= \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_kx_k + u \\ &= \beta_0 + \theta_1x_1 + \beta_2x_1 +\beta_2x_2 + \dots + \beta_kx_k + u \\ &= \beta_0 + \theta_1x_1 + \beta_2(x_1+x_2) + \dots + \beta_kx_k + u \end{align*}$$
+$$\begin{aligned} y &= \beta_0 + \beta_1x_1 + \beta_2x_2 + \dots + \beta_kx_k + u \\\\ &= \beta_0 + \theta_1x_1 + \beta_2x_1 +\beta_2x_2 + \dots + \beta_kx_k + u \\\\ &= \beta_0 + \theta_1x_1 + \beta_2(x_1+x_2) + \dots + \beta_kx_k + u \end{aligned}$$
   - define $x_{sum} \coloneqq x_1 + x_2$, run regression on newly expressed model
   - use regression value for $\hat\theta_1$ to calculate test statistic $t = \frac{\hat\theta_1}{se(\hat\theta_1)}$
 #### Partial $F$-test
